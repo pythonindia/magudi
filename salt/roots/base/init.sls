@@ -7,5 +7,8 @@ base_installs:
       - zsh
       - vim-nox
 
+Asia/Kolkata:
+  timezone.system
+
 include:
   - base/ntp
