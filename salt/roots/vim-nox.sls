@@ -1,3 +1,0 @@
-vim-nox:
-  pkg:
-    - installed
