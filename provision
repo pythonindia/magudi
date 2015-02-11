@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+
+set -e # exit on error
+set -v # be verbose.
+
+# use this as the boot strap script
+# Assumes that salt is already installed, and that there script is trusted.
+# It pulls the latest code from master and runs that.
+
+# every thing is assumed to be running as root.
+cd /opt
+rm -rf magudi
+mkdir -p magudi
+
+# download provisioning code.
+wget -qO- https://github.com/pythonindia/magudi/archive/master.tar.gz | tar xvz -C /opt/magudi --strip-components 1
+
+# if salt is not installed, uncomment the following line.
+# wget -O - https://bootstrap.saltstack.com | sh
+
+# run salt-call/provision.
+mkdir -p /srv
+ln -sf /opt/magudi/salt/roots /srv/salt
+salt-call --local state.highstate -l debug
+
+# Ensure that next run will have the updated version
+# of the this file. Self updating!!!
+cp /opt/magudi/provision /usr/bin/provision
+
+cd # go back to the home directory.
