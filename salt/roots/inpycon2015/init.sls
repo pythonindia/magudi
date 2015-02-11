@@ -17,3 +17,7 @@ https://github.com/pythonindia/inpycon2015.git:
 /etc/nginx/sites-available/in.pycon.org/pycon2015.conf:
   file.managed:
     - source: salt://inpycon2015/in.pycon2015.conf
+
+/etc/nginx/sites-available/in.pycon.org/old-pycon.conf:
+  file.managed:
+    - source: salt://inpycon2015/old-pycon.conf
