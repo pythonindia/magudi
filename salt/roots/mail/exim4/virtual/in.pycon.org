@@ -1,0 +1,9 @@
+contact: sree@mahiti.org,anandpillai@letterboxes.org,vnbang2003@gmail.com,modi.konark@gmail.com,me@kracekumar.com
+accounts: sree@mahiti.org,vnbang2003@gmail.com
+team: contact@in.pycon.org
+doattend: vnbang2003@gmail.com
+tickets: vnbang2003@gmail.com,abdulraufhaseeb@gmail.com
+cfp: anandpillai@letterboxes.org,ramkrsna@gmail.com,anandology@gmail.com
+volunteer: kiran.daredevil@gmail.com,modi.konark@gmail.com,vnbang2003@gmail.com
+pythonmonth: anandology@gmail.com,vnbang2003@gmail.com,modi.konark@gmail.com,anandpillai@letterboxes.org,noufal@nibrahim.net.in,sree@mahiti.org,kiran.daredevil@gmail.com,vabasu@gmail.com,blucalvin@gmail.com
+talk-selection: noufal@nibrahim.net.in,ramkrsna@gmail.com,kushaldas@gmail.com,gora@mimirtech.com,me@kracekumar.com,arvi@alumni.iastate.edu,orsenthil@gmail.com,gnuyoga@gmail.com,modi.konark@gmail.com,vnbang2003@gmail.com
