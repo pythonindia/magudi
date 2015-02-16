@@ -24,7 +24,7 @@ mail-pkgs:
   file.recurse:
     - source: salt://mail/exim4/virtual
 
-/etc/exim4/virtual/in.pycon.org:
+/etc/exim4/virtual/pycon.pssi.org.in:
   file.managed:
     - source: salt://mail/exim4/virtual/in.pycon.org
     - require:
