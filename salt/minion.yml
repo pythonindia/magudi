@@ -2,3 +2,6 @@
 master: localhost
 file_client: local
 log_level: info
+pillar_roots:
+  base:
+    - /srv/pillar

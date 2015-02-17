@@ -1,9 +1,2 @@
-***REMOVED***
-***REMOVED***
-***REMOVED***
-***REMOVED***
-***REMOVED***
-***REMOVED***
-***REMOVED***
-***REMOVED***
-***REMOVED***
+{% for alias, emails in mail_alias.iteritems() %}
+{{alias}}: {% for email in emails %}{{ email }}{% if not loop.last %},{% endif %}{% endfor %} {% endfor %}

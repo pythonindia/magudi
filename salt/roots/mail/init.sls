@@ -24,9 +24,16 @@ mail-pkgs:
   file.recurse:
     - source: salt://mail/exim4/virtual
 
-/etc/exim4/virtual/pycon.pssi.org.in:
+/etc/exim4/virtual/in.pycon.org:
   file.managed:
     - source: salt://mail/exim4/virtual/in.pycon.org
+    - template: jinja
+    - defaults:
+        mail_alias: {{ pillar['mail-alias'] }}
+
+/etc/exim4/virtual/pycon.pssi.org.in:
+  file.symlink:
+    - target: /etc/exim4/virtual/in.pycon.org
     - require:
       - file: /etc/exim4/virtual
 
