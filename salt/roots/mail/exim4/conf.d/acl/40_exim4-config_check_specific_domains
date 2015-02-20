@@ -1,0 +1,4 @@
+acl_check_rcpt:
+  deny
+    condition = ${if match{$h_Received:}{\N\.(dataonlinetomorrow|linkedin)\.com\N}{yes}{no}}
+    message = This mailbox does not support these e-mail services.
