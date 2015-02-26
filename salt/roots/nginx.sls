@@ -1,7 +1,7 @@
 nginx:
   pkgrepo.managed:
     - ppa: nginx/stable
-  pkg.latest:
+  pkg.installed:
     - refresh: True
   service.running:
     - require:
