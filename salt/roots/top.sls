@@ -3,5 +3,6 @@ base:
     - base
     - mail
     - nginx
-    # - postgres
+    - postgresql
     - inpycon2015
+    - junction

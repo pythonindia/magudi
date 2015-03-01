@@ -12,3 +12,6 @@ Asia/Kolkata:
 
 include:
   - base/ntp
+  # - base/admin_user
+  - base/app_user
+  - base/python

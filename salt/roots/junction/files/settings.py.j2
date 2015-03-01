@@ -1,0 +1,78 @@
+import os
+
+
+BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': '{{ db["name"] }}',
+        'USER': '{{ db["user"] }}',
+        'PASSWORD': '{{ db["password"] }}',
+        'HOST': 'localhost',
+    }
+}
+
+#EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+DEBUG = False
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+EMAIL_HOST_USER = 'pssi'
+EMAIL_HOST_PASSWORD = 'cI1M73JmqHu1'
+
+ALLOWED_HOSTS = ['pycon.local.org', 'in.pycon.org', 'pycon.pssi.org.in',
+                 '127.0.0.1']
+
+
+ADMINS = ({%for name, email in admins.items() %}
+       ('{{name}}', '{{email}}'), {% endfor %}
+)
+
+ACCOUNT_DEFAULT_HTTP_PROTOCOL = 'http'
+
+SOCIALACCOUNT_QUERY_EMAIL = True
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format': ("[%(asctime)s] %(levelname)s "
+                       "[%(module)s:%(name)s:%(lineno)s] %(message)s"),
+            'datefmt': "%d/%b/%Y %H:%M:%S"
+        },
+        'simple': {
+            'format': '%(levelname)s %(message)s'
+        },
+    },
+    'filters': {
+        'require_debug_false': {
+            '()': 'django.utils.log.RequireDebugFalse'
+        }
+    },
+    'handlers': {
+        'console': {
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',
+            'formatter': 'verbose'
+        },
+        'mail_admins': {
+            'level': 'ERROR',
+            'filters': ['require_debug_false'],
+            'class': 'django.utils.log.AdminEmailHandler',
+            'formatter': 'verbose'
+        },
+    },
+    'loggers': {
+        '': {
+            'handlers': ['console', 'mail_admins'],
+            'level': 'INFO',
+        },
+    }
+}
+
+SITE_URL = "http://{{pillar['junction']['host']}}/cfp/"
+STATIC_URL = '/cfp/static/'
+MEDIA_URL = '/cfp/m/'
