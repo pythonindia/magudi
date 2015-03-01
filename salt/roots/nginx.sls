@@ -14,7 +14,7 @@ nginx:
       - file: /etc/nginx/sites-enabled/*
 
 /etc/nginx/sites-available/upstreams:
-  file.directory:[]
+  file.directory: []
 
 /etc/nginx/nginx.conf:
   file.managed:
