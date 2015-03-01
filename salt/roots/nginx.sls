@@ -13,6 +13,9 @@ nginx:
       - file: /etc/nginx/sites-available/*
       - file: /etc/nginx/sites-enabled/*
 
+/etc/nginx/sites-available/upstreams:
+  file.directory:[]
+
 /etc/nginx/nginx.conf:
   file.managed:
     - source: salt://nginx.conf
