@@ -18,15 +18,13 @@ junction_code:
       - file: /opt/envs
     - user: app
 
-data_migrations:
-  cmd.wait:
-    - name: /opt/envs/junction/bin/python manage.py migrate
+/opt/envs/junction/bin/python manage.py migrate:
+  cmd.run:
+    - name:
     - cwd: /opt/junction
     - require:
       - virtualenv: /opt/envs/junction
       - file: /opt/junction/settings/prod.py
-    - wait:
-      - git: junction_code
 
 /opt/junction/settings/prod.py:
   file.managed:
@@ -36,3 +34,10 @@ data_migrations:
     - defaults:
       db: {{ db }}
       admins: {{ pillar['junction']['admins']}}
+
+/opt/envs/junction/bin/python manage.py collectstatic --noinput:
+  cmd.run:
+    - cwd: /opt/junction
+    - require:
+      - virtualenv: /opt/envs/junction
+      - file: /opt/junction/settings/prod.py
