@@ -79,6 +79,9 @@ MEDIA_URL = '/cfp/m/'
 FORCE_SCRIPT_NAME = '/cfp'
 LOGIN_REDIRECT_URL = FORCE_SCRIPT_NAME
 
+LOGIN_URL = FORCE_SCRIPT_NAME + '/accounts/login/'
+LOGOUT_URL = FORCE_SCRIPT_NAME + '/accounts/logout/'
+
 SITE_VARIABLES.update({
     'site_name': 'PyCon India',
     'site_description': 'Submit and Manage proposals for pycon india',
