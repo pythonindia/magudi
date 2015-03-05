@@ -9,6 +9,7 @@ setuid  app
 
 script
     export DJANGO_SETTINGS_MODULE="settings"
+    export SITE_NAME="PyCon India"
     export LANG="en_US.UTF-8"
     exec /opt/envs/junction/bin/uwsgi --ini /etc/uwsgi/junction.ini
 end script
