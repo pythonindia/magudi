@@ -1,6 +1,6 @@
 import os
 
-
+from common import SITE_VARIABLES
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 DATABASES = {
@@ -77,3 +77,10 @@ LOGGING = {
 STATIC_URL = '/cfp/static/'
 MEDIA_URL = '/cfp/m/'
 FORCE_SCRIPT_NAME = '/cfp'
+LOGIN_REDIRECT_URL = FORCE_SCRIPT_NAME
+
+SITE_VARIABLES.update({
+    'site_name': 'PyCon India',
+    'site_description': 'Submit and Manage proposals for pycon india',
+    'google_analytics_id': '{{pillar['junction']['google_analytics_id']}}',
+})
