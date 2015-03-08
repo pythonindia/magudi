@@ -20,7 +20,6 @@ junction_code:
 
 /opt/envs/junction/bin/python manage.py migrate:
   cmd.run:
-    - name:
     - cwd: /opt/junction
     - require:
       - virtualenv: /opt/envs/junction
