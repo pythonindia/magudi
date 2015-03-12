@@ -10,6 +10,7 @@ set -v # be verbose.
 # every thing is assumed to be running as root.
 cd /opt
 rm -rf magudi
+rm -rf pillar
 mkdir -p magudi
 mkdir -p pillar
 
@@ -25,6 +26,7 @@ git archive --remote=ssh://$PILLAR_GIT_URL --format=tgz master | tar xvz -C /opt
 # run salt-call/provision.
 mkdir -p /srv
 ln -sf /opt/magudi/salt/roots /srv/salt
+ln -sf /opt/pillar /srv/pillar
 salt-call --local state.highstate -l debug
 
 # Ensure that next run will have the updated version
