@@ -28,17 +28,16 @@ https://github.com/pythonindia/inpycon2015.git:
     - source: salt://inpycon2015/old-pycon.conf
 
 {% if ssl['on'] %}
+/etc/ssl/in.pycon.org.crt:
+  file.managed:
+    - contents_pillar: pycon:ssl:cert
+
+/etc/ssl/in.pycon.org.key:
+  file.managed:
+    - contents_pillar: pycon:ssl:key
+
 /etc/nginx/sites-available/in.pycon.org.with_ssl.conf:
   file.managed:
     - source: salt://inpycon2015/in.pycon.org.with_ssl.conf
 
-/etc/ssl/in.pycon.org.crt:
-  file.managed:
-    - content: |
-        {{ ssl['cert'] | indent(8) }}
-
-/etc/ssl/in.pycon.org.key:
-  file.managed:
-    - content: |
-        {{ ssl['key'] | indent(8) }}
 {% endif %}
