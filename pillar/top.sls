@@ -2,3 +2,4 @@ base:
   '*':
     - mail
     - junction
+    - pycon

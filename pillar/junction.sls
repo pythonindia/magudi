@@ -3,7 +3,8 @@ junction:
     user: junction
     password: junction
     name: junction
-  admins: [] # add you email for testing.
+  admins:
+    Test Me: test@sample.fake # add your email for testing.
   revs:
     junction: master
     pycon2015: master
