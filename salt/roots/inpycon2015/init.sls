@@ -36,6 +36,10 @@ https://github.com/pythonindia/inpycon2015.git:
   file.managed:
     - contents_pillar: pycon:ssl:key
 
+/etc/ssl/dhparam.pem:
+  file.managed:
+    - contents_pillar: pycon:ssl:dhkey
+
 /etc/nginx/sites-available/in.pycon.org.with_ssl.conf:
   file.managed:
     - source: salt://inpycon2015/in.pycon.org.with_ssl.conf
