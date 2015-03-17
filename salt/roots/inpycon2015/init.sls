@@ -7,7 +7,7 @@ https://github.com/pythonindia/inpycon2015.git:
 
 https://github.com/pythonindia/pyconindia-archive.git:
   git.latest:
-    - rev: 042ee482646f928f10b765132c65a0d295ecfbc9
+    - rev: 7e64c9672cd8efc99f401b1a8bb4fdc38e752912
     - target: /opt/pyconindia-archive
 
 /etc/nginx/sites-available/in.pycon.org.conf:
