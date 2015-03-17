@@ -5,6 +5,11 @@ https://github.com/pythonindia/inpycon2015.git:
     - rev: master
     - target: /opt/inpycon2015
 
+https://github.com/pythonindia/pyconindia-archive.git:
+  git.latest:
+    - rev: 042ee482646f928f10b765132c65a0d295ecfbc9
+    - target: /opt/pyconindia-archive
+
 /etc/nginx/sites-available/in.pycon.org.conf:
   file.managed:
     - source: salt://inpycon2015/in.pycon.org.conf
