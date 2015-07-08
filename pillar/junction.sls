@@ -3,6 +3,7 @@ junction:
     user: junction
     password: junction
     name: junction
+  email_host_password: dummy
   admins:
     Test Me: test@sample.fake # add your email for testing.
   revs:

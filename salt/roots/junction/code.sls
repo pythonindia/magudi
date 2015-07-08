@@ -31,6 +31,7 @@ junction_code:
     - source: salt://junction/files/settings.py.j2
     - template: jinja
     - defaults:
+      email_host_password: {{ pillar['junction']['email_host_password'] }}
       db: {{ db }}
       admins: {{ pillar['junction']['admins']}}
 
