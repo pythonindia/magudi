@@ -1,4 +1,13 @@
 {% set db = pillar['junction']['db'] %}
+{% set qr_codes_dir = pillar['junction']['qr_codes_dir'] %}
+
+{{ qr_codes_dir }}:
+  file.directory:
+    - user: app
+    - dir_mode: 755
+    - require:
+      - file: /opt/junction
+
 junction_code:
   git.latest:
     - name: https://github.com/pythonindia/junction.git
