@@ -11,3 +11,4 @@ junction:
     pycon2015: master
   host: pycon.local.org:8000
   google_analytics_id: UA-XXXXXXX-1
+  qr_codes_dir: /opt/junction/qr_codes/
