@@ -7,6 +7,7 @@
     - dir_mode: 755
     - require:
       - file: /opt/junction
+      - git: junction_code
 
 junction_code:
   git.latest:

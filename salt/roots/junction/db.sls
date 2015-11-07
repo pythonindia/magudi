@@ -1,9 +1,9 @@
 {% set db = pillar['junction']['db'] %}
 junction_database:
   postgres_user.present:
+    - user: postgres
     - name: {{ db['user'] }}
     - password: {{ db['password'] }}
-    - runas: postgres
     - require:
       - service: postgresql
 
@@ -14,6 +14,6 @@ junction_database:
     - lc_collate: en_US.UTF8
     - template: template0
     - owner: {{ db['user'] }}
-    - runas: postgres
+    - user: postgres
     - require:
       - postgres_user: junction
