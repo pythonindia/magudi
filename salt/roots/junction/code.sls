@@ -21,19 +21,39 @@ junction_code:
 /opt/envs/junction:
   virtualenv.managed:
     - system_site_packages: False
-    - requirements: /opt/junction/requirements.txt
     - require:
       - git: junction_code
       - pkg: virtualenv
       - file: /opt/envs
     - user: app
 
+junction_pip_upgrade:
+  pip.installed:
+    - name: pip
+    - upgrade: True
+    - bin_env: /opt/envs/junction
+    - require:
+      - virtualenv: /opt/envs/junction
+      - file: /opt/junction/settings/prod.py
+    - user: app
+
+junction_pip_requirements:
+  pip.installed:
+    - requirements: /opt/junction/requirements.txt
+    - bin_env: /opt/envs/junction
+    - require:
+      - pip: junction_pip_upgrade
+    - user: app
+
+
 /opt/envs/junction/bin/python manage.py migrate:
   cmd.run:
     - cwd: /opt/junction
     - require:
-      - virtualenv: /opt/envs/junction
+      - pip: junction_pip_requirements
       - file: /opt/junction/settings/prod.py
+      - postgres_database: junction_database
+    - user: app
 
 /opt/junction/settings/prod.py:
   file.managed:
@@ -44,6 +64,7 @@ junction_code:
       email_host_password: {{ pillar['junction']['email_host_password'] }}
       db: {{ db }}
       admins: {{ pillar['junction']['admins']}}
+    - user: app
 
 /opt/envs/junction/bin/python manage.py collectstatic --noinput:
   cmd.run:
@@ -51,3 +72,4 @@ junction_code:
     - require:
       - virtualenv: /opt/envs/junction
       - file: /opt/junction/settings/prod.py
+    - user: app
