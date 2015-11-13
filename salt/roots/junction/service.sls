@@ -19,7 +19,11 @@ junction:
 /etc/nginx/sites-available/in.pycon.org/cfp.conf:
   file.managed:
     - source: salt://junction/files/cfp.conf.j2
+    - require:
+        - file: nginx_inpycon_dir
 
 /etc/nginx/sites-available/upstreams/junction_upstream.conf:
   file.managed:
     - source: salt://junction/files/junction_upstream.conf
+    - require:
+        - file: nginx_config_folders

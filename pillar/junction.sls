@@ -1,4 +1,6 @@
 junction:
+  server_config:
+    port: 8902
   db:
     user: junction
     password: junction

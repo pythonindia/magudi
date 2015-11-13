@@ -15,10 +15,16 @@ Vagrant.configure(2) do |config|
     vb.customize ["modifyvm", :id, "--memory", "1024", "--cpus", "2"]
   end
 
-  config.vm.provision :salt do |salt|
-    salt.minion_config = "salt/minion.yml"
-    salt.run_highstate = true
-    salt.colorize = true
-    salt.log_level = 'info'
+  config.vm.define "pycon" do |machine|
+    machine.vm.hostname = "pycon"
   end
+
+  config.vm.define "wye" do |machine|
+    machine.vm.hostname = "wye"
+  end
+
+  config.vm.provision "shell",
+                      inline: "curl -L https://bootstrap.saltstack.com | sudo sh -s -- stable"
+  config.vm.provision "shell",
+                      inline: "salt-call --local state.highstate -l debug --no-color"
 end

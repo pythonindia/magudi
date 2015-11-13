@@ -13,8 +13,14 @@ nginx:
       - file: /etc/nginx/sites-available/*
       - file: /etc/nginx/sites-enabled/*
 
-/etc/nginx/sites-available/upstreams:
-  file.directory: []
+nginx_config_folders:
+  file.directory:
+    - names:
+        - /etc/nginx/sites-enabled/
+        - /etc/nginx/sites-available/
+        - /etc/nginx/sites-available/upstreams
+    - require:
+        - pkg: nginx
 
 /etc/nginx/nginx.conf:
   file.managed:

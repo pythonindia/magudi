@@ -1,5 +1,5 @@
-{% set db = pillar['junction']['db'] %}
-junction_database:
+{% macro database(name, db) -%}
+{{name}}_database:
   postgres_user.present:
     - user: postgres
     - name: {{ db['user'] }}
@@ -16,4 +16,5 @@ junction_database:
     - owner: {{ db['user'] }}
     - user: postgres
     - require:
-      - postgres_user: junction
+      - postgres_user: {{name}}
+{% endmacro %}

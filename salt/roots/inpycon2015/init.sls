@@ -14,23 +14,35 @@ https://github.com/pythonindia/pyconindia-archive.git:
   file.managed:
     - source: salt://inpycon2015/in.pycon.org.conf
     - template: jinja
+    - makedirs: True
     - defaults:
       ssl: {{ ssl }}
 
 /etc/nginx/sites-enabled/in.pycon.org.conf:
   file.symlink:
     - target: /etc/nginx/sites-available/in.pycon.org.conf
+    - require:
+        - file: /etc/nginx/sites-available/in.pycon.org.conf
+        - file: nginx_config_folders
 
-/etc/nginx/sites-available/in.pycon.org/:
-  file.directory: []
+nginx_inpycon_dir:
+  file.directory:
+    - names:
+        - /etc/nginx/sites-available/in.pycon.org/
+    - require:
+        - file: nginx_config_folders
 
 /etc/nginx/sites-available/in.pycon.org/pycon2015.conf:
   file.managed:
     - source: salt://inpycon2015/in.pycon2015.conf
+    - require:
+        - file: nginx_inpycon_dir
 
 /etc/nginx/sites-available/in.pycon.org/old-pycon.conf:
   file.managed:
     - source: salt://inpycon2015/old-pycon.conf
+    - require:
+        - file: nginx_inpycon_dir
 
 {% if ssl['on'] %}
 /etc/ssl/in.pycon.org.crt:

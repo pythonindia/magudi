@@ -19,7 +19,7 @@ blog_repo:
     - require:
       - git: blog_repo
       - pkg: virtualenv
-      - file: /opt/envs
+      - file: uwsgi_dirs
     - user: app
 
 publish_blog:
@@ -33,3 +33,5 @@ publish_blog:
 /etc/nginx/sites-available/in.pycon.org/blog.conf:
   file.managed:
     - source: salt://blog/blog.conf.j2
+    - require:
+        - file: nginx_inpycon_dir
