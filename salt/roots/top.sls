@@ -4,12 +4,14 @@ base:
     - postgresql
     - nginx
     - pythonexpressin
-  'in.pycon.org':
+  'nodename:in.pycon.org':
+    - match: grain
     - blog
     - mail
     - inpycon2015
     - lib/uwsgi_common
     - junction
-  'pythonexpress.in':
+  'nodename:pythonexpress.in':
+    - match: grain
     - lib/uwsgi_common
     - wye
