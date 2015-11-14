@@ -16,11 +16,11 @@ Vagrant.configure(2) do |config|
   end
 
   config.vm.define "pycon" do |machine|
-    machine.vm.hostname = "pycon"
+    machine.vm.hostname = "in.pycon.org"
   end
 
   config.vm.define "wye" do |machine|
-    machine.vm.hostname = "wye"
+    machine.vm.hostname = "pythonexpress.in"
   end
 
   config.vm.provision "shell",

@@ -1,6 +1,7 @@
 junction:
   server_config:
     port: 8902
+    module: wsgi
   db:
     user: junction
     password: junction

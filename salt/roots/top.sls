@@ -2,13 +2,14 @@ base:
   '*':
     - base
     - postgresql
-    - blog
+    - nginx
     - pythonexpressin
-  'pycon':
+  'in.pycon.org':
+    - blog
     - mail
     - inpycon2015
-    - nginx
     - lib/uwsgi_common
     - junction
-  'wye':
+  'pythonexpress.in':
+    - lib/uwsgi_common
     - wye

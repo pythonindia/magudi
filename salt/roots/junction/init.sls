@@ -9,7 +9,7 @@
 
 {{ database(name, db) }}
 {{ uwsgi(name, pillar[name]['server_config']) }}
-{{ code(name, pillar[name]['revs'][name])}}
+{{ code(name, pillar[name]['revs'][name], 'requirements.txt')}}
 {{ env_update(name)}}
 
 {% set qr_codes_dir = pillar['junction']['qr_codes_dir'] %}
@@ -28,9 +28,9 @@
     - source: salt://junction/files/settings.py.j2
     - template: jinja
     - defaults:
-      email_host_password: {{ pillar['junction']['email_host_password'] }}
+      email_host_password: {{ pillar[name]['email_host_password'] }}
       db: {{ db }}
-      admins: {{ pillar['junction']['admins']}}
+      admins: {{ pillar[name]['admins']}}
 
 include:
   - junction/service

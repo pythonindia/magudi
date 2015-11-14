@@ -1,0 +1,15 @@
+description "CFP Junction application service"
+author      "PSSI Devs"
+
+start       on     startup
+stop        on     shutdown
+respawn
+
+setuid  app
+
+script
+    export DJANGO_SETTINGS_MODULE="settings"
+    export SITE_NAME="Python Express"
+    export LANG="en_US.UTF-8"
+    exec /opt/envs/wye/bin/uwsgi --ini /etc/uwsgi/wye.ini
+end script

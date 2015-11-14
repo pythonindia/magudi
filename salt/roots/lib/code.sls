@@ -1,4 +1,4 @@
-{% macro code(name, code_rev) -%}
+{% macro code(name, code_rev, requirements_file) -%}
 /opt/{{name}}:
   file.directory:
     - user: app
@@ -19,7 +19,7 @@
     - require:
       - git: {{name}}_code
       - pkg: virtualenv
-      - file: /opt/envs
+      - file: uwsgi_dirs
     - user: app
 
 {{name}}_pip_upgrade:
@@ -33,9 +33,10 @@
 
 {{name}}_pip_requirements:
   pip.installed:
-    - requirements: /opt/{{name}}/requirements.txt
+    - requirements: /opt/{{name}}/{{requirements_file}}
     - bin_env: /opt/envs/{{name}}
     - require:
       - pip: {{name}}_pip_upgrade
     - user: app
+    - cwd: /opt/{{name}}/
 {% endmacro %}

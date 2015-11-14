@@ -1,0 +1,16 @@
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': '{{ db["name"] }}',
+        'USER': '{{ db["user"] }}',
+        'PASSWORD': '{{ db["password"] }}',
+        'HOST': 'localhost',
+    }
+}
+
+ADMINS = ({%for name, email in admins.items() %}
+       ('{{name}}', '{{email}}'), {% endfor %}
+)
+
+ALLOWED_HOSTS = ['.pythonexpress.in']
