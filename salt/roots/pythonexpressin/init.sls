@@ -39,11 +39,11 @@ nginx_pythonexpress_dir:
 {% if ssl['on'] %}
 /etc/ssl/beta.pythonexpress.in.crt:
   file.managed:
-    - contents_pillar: pycon:ssl:cert
+    - contents_pillar: pythonexpress:ssl:cert
 
 /etc/ssl/beta.pythonexpress.in.key:
   file.managed:
-    - contents_pillar: pycon:ssl:key
+    - contents_pillar: pythonexpress:ssl:key
 
 /etc/nginx/sites-available/beta.pythonexpress.in.with_ssl.conf:
   file.managed:
