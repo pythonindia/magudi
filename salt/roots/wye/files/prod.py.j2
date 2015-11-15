@@ -14,3 +14,4 @@ ADMINS = ({%for name, email in admins.items() %}
 )
 
 ALLOWED_HOSTS = ['.pythonexpress.in']
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
