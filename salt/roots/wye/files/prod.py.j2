@@ -14,4 +14,12 @@ ADMINS = ({%for name, email in admins.items() %}
 )
 
 ALLOWED_HOSTS = ['.pythonexpress.in']
+
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST_USER = '{{ pillar["email_host_user"] }}'
+EMAIL_HOST_PASSWORD = '{{ pillar["email_host_password"] }}'
+
+TWITTER_CONSUMER_KEY = '{{ pillar["twitter_consumer_key"] }}'
+TWITTER_CONSUMER_SECRET = '{{ pillar["twitter_consumer_secret"] }}'
+TWITTER_ACCESS_TOKEN = '{{ pillar["twitter_access_token"] }}'
+TWITTER_ACCESS_TOKEN_SECRET = '{{ pillar["twitter_access_token_secret"] }}'
