@@ -3,7 +3,7 @@ location ~ ^/static/(.*)$ {
 }
 
 location ~ ^/media/(.*)$ {
-    alias {{pillar["wye"]["media_root"]}};
+    alias {{pillar["wye"]["media_root"]}}/$1;
 }
 
 location ~ ^/(.*)$ {
