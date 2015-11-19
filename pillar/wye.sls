@@ -13,3 +13,4 @@ wye:
     wye: master
   host: pycon.local.org:8000
   google_analytics_id: UA-XXXXXXX-1
+  media_root: /var/data/wye/media/

@@ -2,6 +2,10 @@ location ~ ^/static/(.*)$ {
     alias /opt/wye/wye/assets/collected-static/$1;
 }
 
+location ~ ^/media/(.*)$ {
+    alias {{pillar["wye"]["media_root"]}};
+}
+
 location ~ ^/(.*)$ {
     proxy_read_timeout 1000;
     proxy_connect_timeout 500;
