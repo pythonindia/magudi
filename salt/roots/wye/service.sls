@@ -1,6 +1,6 @@
 {% set name = 'wye' %}
 
-{{pillar["wye"]["media_root"]}}:
+{{pillar[name]["media_root"]}}:
   file.directory:
     - user: app
     - makedirs: True
@@ -15,7 +15,7 @@
     - require:
       - file: /etc/init/{{name}}.conf
       - file: /etc/uwsgi/{{name}}.ini
-      - file: {{pillar["wye"]["media_root"]}}
+      - file: {{pillar[name]["media_root"]}}
       - pip: uwsgi
       - cmd: /opt/envs/{{name}}/bin/python manage.py migrate
     - reload: True
