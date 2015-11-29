@@ -6,6 +6,8 @@
     - template: jinja
     - require:
         - file: nginx_config_folders
+    - defaults:
+      ssl: {{ ssl }}
 
 /etc/nginx/sites-available/beta.pythonexpress.in.conf:
   file.managed:
@@ -13,8 +15,6 @@
     - template: jinja
     - require:
         - file: nginx_config_folders
-    - defaults:
-      ssl: {{ ssl }}
 
 /etc/nginx/sites-enabled/pythonexpress.in.conf:
   file.symlink:
@@ -31,22 +31,22 @@
 nginx_pythonexpress_dir:
   file.directory:
     - names:
-        - /etc/nginx/sites-available/beta.pythonexpress.in/
-        - /etc/nginx/sites-available/beta.pythonexpress.in/upstreams/
+        - /etc/nginx/sites-available/pythonexpress.in/
+        - /etc/nginx/sites-available/pythonexpress.in/upstreams/
     - require:
         - file: nginx_config_folders
 
 {% if ssl['on'] %}
-/etc/ssl/beta.pythonexpress.in.crt:
+/etc/ssl/pythonexpress.in.crt:
   file.managed:
     - contents_pillar: pythonexpress:ssl:cert
 
-/etc/ssl/beta.pythonexpress.in.key:
+/etc/ssl/pythonexpress.in.key:
   file.managed:
     - contents_pillar: pythonexpress:ssl:key
 
-/etc/nginx/sites-available/beta.pythonexpress.in.with_ssl.conf:
+/etc/nginx/sites-available/pythonexpress.in.with_ssl.conf:
   file.managed:
-    - source: salt://pythonexpressin/beta.pythonexpress.in.with_ssl.conf
+    - source: salt://pythonexpressin/pythonexpress.in.with_ssl.conf
 
 {% endif %}

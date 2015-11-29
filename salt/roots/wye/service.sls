@@ -25,22 +25,14 @@
       - file: /opt/{{name}}/settings/prod.py
       - git: {{name}}_code
 
-pythonexpress_nginx_dirs:
-  file.directory:
-    - names:
-        - /etc/nginx/sites-available/beta.pythonexpress.in/
-        - /etc/nginx/sites-available/beta.pythonexpress.in/upstreams/
-    - require:
-        - file: nginx_pythonexpress_dir
-
-/etc/nginx/sites-available/beta.pythonexpress.in/express.conf:
+/etc/nginx/sites-available/pythonexpress.in/express.conf:
   file.managed:
     - source: salt://{{name}}/files/express.conf.j2
     - require:
         - file: nginx_pythonexpress_dir
     - template: jinja
 
-/etc/nginx/sites-available/beta.pythonexpress.in/upstreams/{{name}}_upstream.conf:
+/etc/nginx/sites-available/pythonexpress.in/upstreams/{{name}}_upstream.conf:
   file.managed:
     - source: salt://{{name}}/files/{{name}}_upstream.conf.j2
     - require:
