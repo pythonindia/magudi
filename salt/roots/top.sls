@@ -3,7 +3,6 @@ base:
     - base
     - postgresql
     - nginx
-    - pythonexpressin
   'nodename:in.pycon.org':
     - match: grain
     - blog
@@ -14,4 +13,5 @@ base:
   'nodename:pythonexpress.in':
     - match: grain
     - lib/uwsgi_common
+    - pythonexpressin
     - wye
