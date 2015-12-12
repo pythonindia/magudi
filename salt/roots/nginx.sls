@@ -25,3 +25,16 @@ nginx_config_folders:
 /etc/nginx/nginx.conf:
   file.managed:
     - source: salt://nginx.conf
+
+
+/etc/nginx/sites-available/default:
+  file.managed:
+    - source: salt://nginx-default.conf
+
+
+/etc/nginx/sites-enabled/default:
+  file.symlink:
+    - target: /etc/nginx/sites-available/default
+    - require:
+      - file: /etc/nginx/sites-available/default
+
