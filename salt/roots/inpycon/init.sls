@@ -5,6 +5,11 @@ https://github.com/pythonindia/inpycon2015.git:
     - rev: master
     - target: /opt/inpycon2015
 
+https://github.com/pythonindia/inpycon2016.git:
+  git.latest:
+    - rev: master
+    - target: /opt/inpycon2016
+
 https://github.com/pythonindia/pyconindia-archive.git:
   git.latest:
     - rev: 72613218a3ad7123da3804e3df0c19f01c0a684b
@@ -12,7 +17,7 @@ https://github.com/pythonindia/pyconindia-archive.git:
 
 /etc/nginx/sites-available/in.pycon.org.conf:
   file.managed:
-    - source: salt://inpycon2015/in.pycon.org.conf
+    - source: salt://inpycon/in.pycon.org.conf
     - template: jinja
     - makedirs: True
     - defaults:
@@ -34,13 +39,19 @@ nginx_inpycon_dir:
 
 /etc/nginx/sites-available/in.pycon.org/pycon2015.conf:
   file.managed:
-    - source: salt://inpycon2015/in.pycon2015.conf
+    - source: salt://inpycon/in.pycon2015.conf
+    - require:
+        - file: nginx_inpycon_dir
+
+/etc/nginx/sites-available/in.pycon.org/pycon2016.conf:
+  file.managed:
+    - source: salt://inpycon/in.pycon2016.conf
     - require:
         - file: nginx_inpycon_dir
 
 /etc/nginx/sites-available/in.pycon.org/old-pycon.conf:
   file.managed:
-    - source: salt://inpycon2015/old-pycon.conf
+    - source: salt://inpycon/old-pycon.conf
     - require:
         - file: nginx_inpycon_dir
 
@@ -59,6 +70,6 @@ nginx_inpycon_dir:
 
 /etc/nginx/sites-available/in.pycon.org.with_ssl.conf:
   file.managed:
-    - source: salt://inpycon2015/in.pycon.org.with_ssl.conf
+    - source: salt://inpycon/in.pycon.org.with_ssl.conf
 
 {% endif %}
