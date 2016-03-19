@@ -56,11 +56,11 @@ nginx_inpycon_dir:
         - file: nginx_inpycon_dir
 
 {% if ssl['on'] %}
-/etc/ssl/in.pycon.org.crt:
+/etc/ssl/in.pycon.org.2016.fullchain.pem:
   file.managed:
     - contents_pillar: pycon:ssl:cert
 
-/etc/ssl/in.pycon.org.key:
+/etc/ssl/in.pycon.org.2016.pvtkey.pem:
   file.managed:
     - contents_pillar: pycon:ssl:key
 
