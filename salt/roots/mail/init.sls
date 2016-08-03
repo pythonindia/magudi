@@ -32,10 +32,10 @@ mail-pkgs:
     - defaults:
         mail_alias: {{ pillar['mail-alias'] }}
 
-{% if pillar['mail-alias'] == 'in.pycon.org' %}
+{% if pillar['mail-name'] == 'in.pycon.org' %}
 /etc/exim4/virtual/pycon.pssi.org.in:
   file.symlink:
-    - target: /etc/exim4/virtual/{{ pillar['mail-alias'] }}
+    - target: /etc/exim4/virtual/{{ pillar['mail-name'] }}
     - require:
       - file: /etc/exim4/virtual
 {% endif %}
