@@ -15,3 +15,4 @@ base:
     - lib/uwsgi_common
     - pythonexpressin
     - wye
+    - mail
