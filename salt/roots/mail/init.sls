@@ -11,7 +11,7 @@ mail-pkgs:
 /etc/mailname:
   file.managed:
     - mode: 644
-    - contents: in.pycon.org
+    - contents: {{ pillar['mail-name'] }}
 
 ############
 # exim4
