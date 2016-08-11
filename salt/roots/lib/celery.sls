@@ -8,6 +8,9 @@ broker:
 /etc/init/{{name}}_celery.conf:
   file.managed:
     - source: salt://lib/files/celery.conf.j2
+    - template: jinja
+    - defaults:
+        name: "{{name}}"
     - user: app
 
 {{name}}_celery:
