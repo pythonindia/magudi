@@ -35,7 +35,7 @@ mail-pkgs:
 {% if pillar['mail-name'] == 'in.pycon.org' %}
 /etc/exim4/virtual/pycon.pssi.org.in:
   file.symlink:
-    - target: /etc/exim4/virtual/{{ pillar['mail-name'] }}
+    - target: /etc/exim4/virtual/in.pycon.org
     - require:
       - file: /etc/exim4/virtual
 {% endif %}
