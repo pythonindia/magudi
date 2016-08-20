@@ -9,6 +9,7 @@
     - name: https://github.com/pythonindia/{{name}}.git
     - rev: {{code_rev}}
     - target: /opt/{{name}}
+    - force_reset: True
     - user: app
     - require:
       - file: /opt/{{name}}
