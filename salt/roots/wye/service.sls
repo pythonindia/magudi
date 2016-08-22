@@ -1,4 +1,4 @@
-{% set name = 'wye' %}
+{% set name = pillar['service']['name'] %}
 
 {{pillar[name]["media_root"]}}:
   file.directory:

@@ -16,3 +16,4 @@ base:
     - pythonexpressin
     - wye
     - mail
+    - lib/celery

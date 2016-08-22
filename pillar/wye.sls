@@ -19,3 +19,7 @@ wye:
   twitter_consumer_secret: notreal
   twitter_access_token: notreal
   twitter_access_token_secret: notreal
+  account_default_http_protocol: http
+
+service:
+  name: wye
