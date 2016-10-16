@@ -26,3 +26,4 @@ TWITTER_ACCESS_TOKEN_SECRET = '{{ pillar["wye"]["twitter_access_token_secret"] }
 ACCOUNT_DEFAULT_HTTP_PROTOCOL = '{{ pillar["wye"]["account_default_http_protocol"] }}'
 
 MEDIA_ROOT = '{{pillar["wye"]["media_root"]}}'
+CELERYBEAT_SCHEDULER = "djcelery.schedulers.DatabaseScheduler"

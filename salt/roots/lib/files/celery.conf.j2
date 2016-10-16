@@ -1,0 +1,15 @@
+description "Celery for {{name}} application service"
+author      "PSSI Devs"
+
+start       on     startup
+stop        on     shutdown
+respawn
+
+setuid  app
+
+script
+    export DJANGO_SETTINGS_MODULE="settings"
+    export SITE_NAME="{{name}} Celery"
+    export LANG="en_US.UTF-8"
+    exec /opt/envs/{{name}}/bin/python /opt/{{name}}/manage.py celery worker -B
+end script

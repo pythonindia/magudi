@@ -7,7 +7,7 @@ base:
     - match: grain
     - blog
     - mail
-    - inpycon2015
+    - inpycon
     - lib/uwsgi_common
     - junction
   'nodename:pythonexpress.in':
@@ -15,3 +15,5 @@ base:
     - lib/uwsgi_common
     - pythonexpressin
     - wye
+    - mail
+    - lib/celery

@@ -11,7 +11,7 @@ mail-pkgs:
 /etc/mailname:
   file.managed:
     - mode: 644
-    - contents: in.pycon.org
+    - contents: {{ pillar['mail-name'] }}
 
 ############
 # exim4
@@ -19,23 +19,26 @@ mail-pkgs:
 /etc/exim4/update-exim4.conf.conf:
   file.managed:
     - source: salt://mail/exim4/update-exim4.conf.conf
+    - template: jinja
 
 /etc/exim4/virtual:
   file.recurse:
     - source: salt://mail/exim4/virtual
 
-/etc/exim4/virtual/in.pycon.org:
+/etc/exim4/virtual/{{ pillar['mail-name'] }}:
   file.managed:
-    - source: salt://mail/exim4/virtual/in.pycon.org
+    - source: salt://mail/exim4/virtual/mail_aliases
     - template: jinja
     - defaults:
         mail_alias: {{ pillar['mail-alias'] }}
 
+{% if pillar['mail-name'] == 'in.pycon.org' %}
 /etc/exim4/virtual/pycon.pssi.org.in:
   file.symlink:
     - target: /etc/exim4/virtual/in.pycon.org
     - require:
       - file: /etc/exim4/virtual
+{% endif %}
 
 /etc/exim4/conf.d/:
   file.recurse:
