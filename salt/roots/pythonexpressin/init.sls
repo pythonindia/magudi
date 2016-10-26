@@ -1,5 +1,8 @@
 {% set ssl = pillar['pythonexpress']['ssl'] %}
 
+/var/www/html/pythonexpress.in/:
+  file.directory
+
 /etc/nginx/sites-available/pythonexpress.in.conf:
   file.managed:
     - source: salt://pythonexpressin/pythonexpress.in.conf
