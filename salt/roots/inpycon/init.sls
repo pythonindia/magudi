@@ -10,6 +10,11 @@ https://github.com/pythonindia/inpycon2016.git:
     - rev: master
     - target: /opt/inpycon2016
 
+https://github.com/pythonindia/inpycon2017.git:
+  git.latest:
+    - rev: master
+    - target: /opt/inpycon2017
+
 https://github.com/pythonindia/pyconindia-archive.git:
   git.latest:
     - rev: 72613218a3ad7123da3804e3df0c19f01c0a684b
