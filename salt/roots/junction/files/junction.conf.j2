@@ -8,9 +8,12 @@ After=network.target
 User=app
 Type=forking
 EnvironmentFile='DJANGO_SETTINGS_MODULE="settings"' 'SITE_NAME="PyCon India"' 'LANG="en_US.UTF-8"'
-ExecStart=/usr/sbin/daemonize -u /opt/envs/junction/bin/uwsgi --ini /etc/uwsgi/junction.ini
-ExecStop=/bin/kill -TERM $MAINPID
+ExecStart=/opt/envs/junction/bin/uwsgi --ini /etc/uwsgi/junction.ini
+Restart=on-failure
+Type=notify
+StandardError=syslog
 TimeoutSec=3000
+NotifyAccess=all
 
 [Install]
 WantedBy=multi-user.target
