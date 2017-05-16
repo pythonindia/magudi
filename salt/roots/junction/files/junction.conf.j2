@@ -5,6 +5,7 @@ After=syslog.target
 After=network.target
 
 [Service]
+User=app
 Type=forking
 EnvironmentFile='DJANGO_SETTINGS_MODULE="settings"' 'SITE_NAME="PyCon India"' 'LANG="en_US.UTF-8"'
 ExecStart=/usr/sbin/daemonize -u /opt/envs/junction/bin/uwsgi --ini /etc/uwsgi/junction.ini
