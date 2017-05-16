@@ -1,6 +1,11 @@
-/etc/init/junction.conf:
+/usr/lib/systemd/system/junction.service:
   file.managed:
     - source: salt://junction/files/junction.conf.j2
+    - user: app
+
+/etc/sysconfig/junction:
+  file.managed:
+    - source: salt://junction/files/junction.env
     - user: app
 
 junction:

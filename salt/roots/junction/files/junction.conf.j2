@@ -1,15 +1,15 @@
-description "CFP Junction application service"
-author      "PSSI Devs"
+# /usr/lib/systemd/system/junction.service
+[Unit]
+Description=CFP Junction application service
+After=syslog.target
+After=network.target
 
-start       on     startup
-stop        on     shutdown
-respawn
+[Service]
+Type=forking
+EnvironmentFile=-/etc/sysconfig/junction
+ExecStart=/usr/sbin/daemonize -u /opt/envs/junction/bin/uwsgi --ini /etc/uwsgi/junction.ini
+ExecStop=/bin/kill -TERM $MAINPID
+TimeoutSec=3000
 
-setuid  app
-
-script
-    export DJANGO_SETTINGS_MODULE="settings"
-    export SITE_NAME="PyCon India"
-    export LANG="en_US.UTF-8"
-    exec /opt/envs/junction/bin/uwsgi --ini /etc/uwsgi/junction.ini
-end script
+[Install]
+WantedBy=multi-user.target
