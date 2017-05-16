@@ -3,16 +3,10 @@
     - source: salt://junction/files/junction.conf.j2
     - user: app
 
-/etc/sysconfig/junction:
-  file.managed:
-    - source: salt://junction/files/junction.env
-    - user: app
-
 junction:
   service.running:
     - require:
       - file: /etc/systemd/system/junction.service
-      - file: /etc/sysconfig/junction
       - file: /etc/uwsgi/junction.ini
       - pip: uwsgi
     - reload: True
