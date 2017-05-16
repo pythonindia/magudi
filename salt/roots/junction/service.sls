@@ -11,7 +11,6 @@ junction:
       - pip: uwsgi
     - reload: True
     - watch:
-      - file: /etc/init/junction.conf
       - file: /etc/uwsgi/junction.ini
       - file: /opt/junction/settings/prod.py
       - git: junction_code
