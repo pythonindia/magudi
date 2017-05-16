@@ -1,4 +1,4 @@
-/usr/lib/systemd/system/junction.service:
+/etc/systemd/system/junction.service:
   file.managed:
     - source: salt://junction/files/junction.conf.j2
     - user: app
@@ -11,7 +11,8 @@
 junction:
   service.running:
     - require:
-      - file: /etc/init/junction.conf
+      - file: /etc/systemd/system/junction.service
+      - file: /etc/sysconfig/junction
       - file: /etc/uwsgi/junction.ini
       - pip: uwsgi
     - reload: True
