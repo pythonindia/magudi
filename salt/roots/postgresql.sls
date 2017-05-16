@@ -7,8 +7,8 @@ postgresql:
   pkg.installed:
     - names:
       - libpq-dev
-      - postgresql-9.4
-      - postgresql-contrib-9.4
+      - postgresql-9.6
+      - postgresql-contrib-9.6
   service.running:
     - enable: True
     - require:
