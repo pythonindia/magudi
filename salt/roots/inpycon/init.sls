@@ -1,5 +1,8 @@
 {% set ssl = pillar['pycon']['ssl'] %}
 
+/var/www/html/in.pycon.org/:
+  file.directory
+
 https://github.com/pythonindia/inpycon2015.git:
   git.latest:
     - rev: master
