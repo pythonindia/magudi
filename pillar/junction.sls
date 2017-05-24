@@ -12,7 +12,10 @@ junction:
   revs:
     junction: master
     pycon2015: master
-  host: pycon.local.org:8000
+  host: pycon.local.org:8080
   google_analytics_id: UA-XXXXXXX-1
   qr_codes_dir: /opt/junction/qr_codes/
   explara_api_token: abcd
+
+service:
+  name: junction

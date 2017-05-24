@@ -1,0 +1,19 @@
+# /usr/lib/systemd/system/{{name}}_celery.service
+[Unit]
+Description=Celery for {{name}} application service
+After=syslog.target
+After=network.target
+
+[Service]
+User=app
+Type=forking
+EnvironmentFile='DJANGO_SETTINGS_MODULE="settings"' 'SITE_NAME="{{name}} Celery"' 'LANG="en_US.UTF-8"'
+ExecStart=/opt/envs/{{name}}/bin/python --ini /opt/{{name}}//manage.py celery worker -B
+Restart=on-failure
+Type=notify
+StandardError=syslog
+TimeoutSec=3000
+NotifyAccess=all
+
+[Install]
+WantedBy=multi-user.target
