@@ -8,7 +8,8 @@ After=network.target
 User=app
 Type=forking
 EnvironmentFile='DJANGO_SETTINGS_MODULE="settings"' 'SITE_NAME="{{name}} Celery"' 'LANG="en_US.UTF-8"'
-ExecStart=/opt/envs/{{name}}/bin/python --ini /opt/{{name}}//manage.py celery worker -B
+ExecStart=/opt/envs/{{name}}/bin/celery -A junction worker -l info
+WorkingDirectory=/opt/{{name}}/
 Restart=on-failure
 Type=notify
 StandardError=syslog
