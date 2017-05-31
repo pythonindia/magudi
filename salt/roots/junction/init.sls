@@ -34,3 +34,4 @@
 
 include:
   - junction/service
+  - junction/celery

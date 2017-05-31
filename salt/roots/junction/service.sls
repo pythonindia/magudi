@@ -5,6 +5,7 @@
 
 junction:
   service.running:
+    - enable: True
     - require:
       - file: /etc/systemd/system/junction.service
       - file: /etc/uwsgi/junction.ini
