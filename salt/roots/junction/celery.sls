@@ -5,7 +5,7 @@ broker:
     - names:
       - redis-server
 
-/usr/lib/systemd/system/{{name}}_celery.conf:
+/etc/systemd/system/{{name}}_celery.conf:
   file.managed:
     - source: salt://junction/files/celery.conf.j2
     - template: jinja
@@ -18,9 +18,9 @@ broker:
     - enable: True
     - require:
       - pkg: broker
-      - file: /usr/lib/systemd/system/{{name}}_celery.conf
+      - file: /etc/systemd/system/{{name}}_celery.conf
       - cmd: migrate_{{name}}
     - watch:
-      - file: /usr/lib/systemd/system/{{name}}_celery.conf
+      - file: /etc/systemd/system/{{name}}_celery.conf
       - file: /opt/{{name}}/settings/prod.py
       - git: {{name}}_code
