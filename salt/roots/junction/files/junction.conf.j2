@@ -12,7 +12,7 @@ ExecStart=/opt/envs/junction/bin/uwsgi --ini /etc/uwsgi/junction.ini
 Restart=on-failure
 Type=notify
 StandardError=syslog
-TimeoutSec=3000
+TimeoutSec=300
 NotifyAccess=all
 
 [Install]
