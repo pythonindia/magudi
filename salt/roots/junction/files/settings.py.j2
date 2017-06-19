@@ -96,3 +96,7 @@ USE_ASYNC_FOR_EMAIL=True
 # settings for celery
 BROKER_URL = os.environ.get("BROKER_URL", "redis://localhost:6379/0")
 CELERY_RESULT_BACKEND = os.environ.get("CELERY_RESULT_BACKEND", 'redis://localhost:6379/0')
+
+# SPAM
+SPAM_MODERATION_ADMINS = {{ pillar['spam_moderation_admins'] }}
+USER_SPAM_THRESHOLD = {{ pillar['user_spam_threshold'] }}
