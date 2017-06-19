@@ -18,9 +18,9 @@ broker:
     - enable: True
     - require:
       - pkg: broker
-      - file: /etc/systemd/system/{{name}}_celery.conf
+      - file: /etc/systemd/system/{{name}}_celery.service
       - cmd: migrate_{{name}}
     - watch:
-      - file: /etc/systemd/system/{{name}}_celery.conf
+      - file: /etc/systemd/system/{{name}}_celery.service
       - file: /opt/{{name}}/settings/prod.py
       - git: {{name}}_code
