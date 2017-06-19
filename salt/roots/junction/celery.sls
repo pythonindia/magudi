@@ -5,7 +5,7 @@ broker:
     - names:
       - redis-server
 
-/etc/systemd/system/{{name}}_celery.conf:
+/etc/systemd/system/{{name}}_celery.service:
   file.managed:
     - source: salt://junction/files/celery.conf.j2
     - template: jinja
