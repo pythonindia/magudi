@@ -57,6 +57,12 @@ nginx_inpycon_dir:
     - require:
         - file: nginx_inpycon_dir
 
+/etc/nginx/sites-available/in.pycon.org/pycon2017.conf:
+  file.managed:
+    - source: salt://inpycon/in.pycon2017.conf
+    - require:
+        - file: nginx_inpycon_dir
+
 /etc/nginx/sites-available/in.pycon.org/old-pycon.conf:
   file.managed:
     - source: salt://inpycon/old-pycon.conf
