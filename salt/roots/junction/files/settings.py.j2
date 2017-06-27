@@ -91,7 +91,7 @@ SITE_VARIABLES.update({
 EXPLARA_API_TOKEN = '{{pillar['junction']['explara_api_token']}}'
 QR_CODES_DIR = '{{pillar['junction']['qr_codes_dir']}}'
 
-USE_ASYNC_FOR_EMAIL=True
+USE_ASYNC_FOR_EMAIL=False
 
 # settings for celery
 BROKER_URL = os.environ.get("BROKER_URL", "redis://localhost:6379/0")
