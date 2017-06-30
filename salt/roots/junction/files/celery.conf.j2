@@ -7,17 +7,16 @@ After=network.target
 [Service]
 User=app
 Type=forking
-EnvironmentFile='DJANGO_SETTINGS_MODULE="settings"' 'SITE_NAME="{{name}} Celery"' 'LANG="en_US.UTF-8"' 'CELERY_BIN=/opt/envs/{{name}}/bin/celery' 'CELERY_PID=/usr/run/{{name}}_celery/%N.pid' 'CELERY_LOG=/opt/{{name}}/logs/celery_junction.log'
-ExecStart=/opt/envs/{{name}}/bin/celery -A junction worker -l info
+EnvironmentFile='DJANGO_SETTINGS_MODULE="settings"' 'SITE_NAME="{{name}} Celery"' 'LANG="en_US.UTF-8"'
 WorkingDirectory=/opt/{{name}}/
-ExecStart=/bin/sh -c '${CELERY_BIN} multi start {{name}} \
-  -A {{name}} --pidfile=${CELERY_PID} \
-  --logfile=${CELERY_LOG} --loglevel=info ${CELERYD_OPTS}'
-ExecStop=/bin/sh -c '${CELERY_BIN} multi stopwait {{name}} \
-  --pidfile=${CELERY_PID}'
-ExecReload=/bin/sh -c '${CELERY_BIN} multi restart {{name}} \
-  -A {{name}} --pidfile=${CELERY_PID} \
-  --logfile=${CELERY_LOG} --loglevel=info ${CELERYD_OPTS}'
+ExecStart=/bin/sh -c '{{celery_bin}} multi start {{name}} \
+  -A {{name}} --pidfile={{celery_pid}} \
+  --logfile={{celery_log}} --loglevel=info'
+ExecStop=/bin/sh -c '{{celery_bin}} multi stopwait {{name}} \
+  --pidfile={{celery_pid}}'
+ExecReload=/bin/sh -c '{{celery_bin}} multi restart {{name}} \
+  -A {{name}} --pidfile={{celery_pid}} \
+  --logfile={{celery_log}} --loglevel=info'
 StandardError=syslog
 TimeoutSec=300
 NotifyAccess=all
