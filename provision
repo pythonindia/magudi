@@ -10,15 +10,10 @@ set -v # be verbose.
 # every thing is assumed to be running as root.
 cd /opt
 rm -rf magudi
-rm -rf pillar
 mkdir -p magudi
-mkdir -p pillar
 
 # download provisioning code.
 wget -qO- https://github.com/pythonindia/magudi/archive/master.tar.gz | tar xvz -C /opt/magudi --strip-components 1
-
-# $PILLAR_GIT_URL should be available in the environment. (may be? /etc/environment)
-git archive --remote=ssh://$PILLAR_GIT_URL --format=tgz master | tar xvz -C /opt/pillar
 
 # if salt is not installed, uncomment the following line.
 # wget -O - https://bootstrap.saltstack.com | sh
