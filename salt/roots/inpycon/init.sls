@@ -23,6 +23,11 @@ https://github.com/pythonindia/inpycon2018.git:
     - rev: master
     - target: /opt/inpycon2018
 
+https://github.com/pythonindia/inpycon2019.git:
+  git.latest:
+    - rev: master
+    - target: /opt/inpycon2019
+
 https://github.com/pythonindia/pyconindia-archive.git:
   git.latest:
     - rev: 72613218a3ad7123da3804e3df0c19f01c0a684b
@@ -71,6 +76,12 @@ nginx_inpycon_dir:
 /etc/nginx/sites-available/in.pycon.org/pycon2018.conf:
   file.managed:
     - source: salt://inpycon/in.pycon2018.conf
+    - require:
+        - file: nginx_inpycon_dir
+
+/etc/nginx/sites-available/in.pycon.org/pycon2019.conf:
+  file.managed:
+    - source: salt://inpycon/in.pycon2019.conf
     - require:
         - file: nginx_inpycon_dir
 
