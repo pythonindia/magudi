@@ -25,7 +25,7 @@ https://github.com/pythonindia/inpycon2018.git:
 
 https://github.com/pythonindia/inpycon2019.git:
   git.latest:
-    - rev: master
+    - rev: gh-pages
     - target: /opt/inpycon2019
 
 https://github.com/pythonindia/pyconindia-archive.git:
