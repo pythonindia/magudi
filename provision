@@ -27,7 +27,14 @@ git archive --remote=ssh://$PILLAR_GIT_URL --format=tgz master | tar xvz -C /opt
 mkdir -p /srv
 ln -sf /opt/magudi/salt/roots /srv/salt
 ln -sf /opt/pillar /srv/pillar
-salt-call --local state.highstate -l debug
+
+if [ "$1" = "--debug" ]; then
+  LOG_LEVEL="debug"
+else
+  LOG_LEVEL="warning"  # The default
+fi
+
+salt-call --local state.highstate -l $LOG_LEVEL
 
 # Ensure that next run will have the updated version
 # of the this file. Self updating!!!
