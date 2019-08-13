@@ -5,7 +5,7 @@
 
 /etc/nginx/sites-available/pythonexpress.org.conf:
   file.managed:
-    - source: salt://pythonexpressin/pythonexpress.org.conf
+    - source: salt://pythonexpress/pythonexpress.org.conf
     - template: jinja
     - require:
         - file: nginx_config_folders
@@ -14,7 +14,7 @@
 
 /etc/nginx/sites-available/beta.pythonexpress.in.conf:
   file.managed:
-    - source: salt://pythonexpressin/beta.pythonexpress.in.conf
+    - source: salt://pythonexpress/beta.pythonexpress.in.conf
     - template: jinja
     - require:
         - file: nginx_config_folders
@@ -50,6 +50,6 @@ nginx_pythonexpress_dir:
 
 /etc/nginx/sites-available/pythonexpress.org.with_ssl.conf:
   file.managed:
-    - source: salt://pythonexpressin/pythonexpress.org.with_ssl.conf
+    - source: salt://pythonexpress/pythonexpress.org.with_ssl.conf
 
 {% endif %}

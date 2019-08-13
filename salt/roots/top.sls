@@ -10,10 +10,10 @@ base:
     - inpycon
     - lib/uwsgi_common
     - junction
-  'nodename:pythonexpress.in':
+  'nodename:pythonexpress.org':
     - match: grain
     - lib/uwsgi_common
-    - pythonexpressin
+    - pythonexpress
     - wye
     - mail
     - lib/celery

@@ -13,7 +13,7 @@ ADMINS = ({%for name, email in admins.items() %}
        ('{{name}}', '{{email}}'), {% endfor %}
 )
 
-ALLOWED_HOSTS = ['.pythonexpress.in']
+ALLOWED_HOSTS = ['.pythonexpress.org']
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST_USER = '{{ pillar["wye"]["email_host_user"] }}'
