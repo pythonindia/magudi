@@ -27,7 +27,7 @@ Vagrant.configure(2) do |config|
 
   config.vm.define "wye" do |machine|
     machine.vm.network "forwarded_port", guest: 80, host: 8082
-    machine.vm.hostname = "pythonexpress.in"
+    machine.vm.hostname = "pythonexpress.org"
   end
 
   config.vm.provision "shell",
