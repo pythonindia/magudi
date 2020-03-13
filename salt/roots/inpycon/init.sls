@@ -102,7 +102,6 @@ nginx_inpycon_dir:
     - require:
         - file: nginx_inpycon_dir
 
-{% if ssl['on'] %}
 /etc/ssl/in.pycon.org.2016.fullchain.pem:
   file.managed:
     - contents_pillar: pycon:ssl:cert
@@ -118,5 +117,3 @@ nginx_inpycon_dir:
 /etc/nginx/sites-available/in.pycon.org.with_ssl.conf:
   file.managed:
     - source: salt://inpycon/in.pycon.org.with_ssl.conf
-
-{% endif %}
