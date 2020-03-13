@@ -102,13 +102,13 @@ nginx_inpycon_dir:
     - require:
         - file: nginx_inpycon_dir
 
-/etc/ssl/in.pycon.org.2016.fullchain.pem:
-  file.managed:
-    - contents_pillar: pycon:ssl:cert
+# /etc/letsencrypt/live/in.pycon.org/fullchain.pem:
+#   file.managed:
+#     - contents_pillar: pycon:ssl:cert
 
-/etc/ssl/in.pycon.org.2016.pvtkey.pem:
-  file.managed:
-    - contents_pillar: pycon:ssl:key
+# /etc/letsencrypt/live/in.pycon.org/privkey.pem:
+#   file.managed:
+#     - contents_pillar: pycon:ssl:key
 
 /etc/ssl/dhparam.pem:
   file.managed:
